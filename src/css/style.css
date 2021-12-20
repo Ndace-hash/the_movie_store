@@ -1,0 +1,84 @@
+@import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+:root{
+    font-size: 18;
+
+    /* colors */
+    --primary-clr: 56, 96%, 48%;
+    --secondary-clr: 213, 15%, 48%;
+    --accent-clr: 216, 8%, 62%;
+    --misc:hsla(56, 71%, 83%, 0.8);
+
+    --border-radius: 7px;
+}
+body,html{
+    height: 100%;
+    font-family: 'Noto Sans Display', sans-serif;
+    background-color: hsl(var(--accent-clr));
+    color: var(--misc);
+}
+input::placeholder{
+    font-size: 1.2em;
+    font-weight: 500;
+}
+.header-container > h1{
+    text-transform: uppercase;
+    color: var(--misc);
+    font-family: 'Noto Serif', serif;
+}
+.header-container > h1 > span{
+    font-weight: 700;
+    color: hsl(var(--primary-clr));
+}
+
+#search-bar{
+    width: 30rem;
+    padding: .3em .5em;
+    font-weight: 500;
+    outline: none;
+    border-radius: var(--border-radius);
+    box-shadow: 
+        3px 1px 20px 3px var(--misc),
+        1px 1px 7px 1px var(--misc);
+    border: 1px solid transparent;
+}
+#search-bar:focus{
+    box-shadow: 
+        inset 3px 1px 20px 3px var(--misc),
+        1px 1px 7px 1px var(--misc);
+}
+
+.movie-center{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8rem ,1fr));
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 1rem;
+}
+.movie-card{
+    border: 1px solid hsl(var(--secondary-clr));
+    box-shadow: 
+        1px 1px 10px 1px var(--misc);
+    border-radius: var(--border-radius);
+    padding: 0;
+}
+.img-container{
+    height: 12rem;
+    overflow: hidden;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+.img-container > img{
+    height: 100%;
+}
+
+.movie-card > h4 {
+    font-weight: 600;
+    line-height: .8;
+    letter-spacing: 2px;
+    margin-top: .5em;
+}
+
+.movie-card > p {
+    font-size: .7rem;
+    line-height: .5;
+    margin-top: 1em;
+}
