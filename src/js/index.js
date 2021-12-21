@@ -1,67 +1,53 @@
 // import {} from 'dotenv/config'
 // const searchBar = document.getElementById('search-bar')
-// const movieList = document.getElementById('movie-list')
-
-// var baseURL =''
-// var imageSize=''
-
 
 // // dotenv.config()
 // // const API_KEY = process.env.API_KEY;
-// async function fetchData() {
-//     const res = await fetch('https://api.themoviedb.org/3/search/movie?api_key=80620987d484f841a8e638e09a1b89ed&query=fast%20and%20furious&include_adult=true');
-//     const data = await res.json();
 
-//     console.log(data)
-// }
+const movieList = document.getElementById('movie-list')
 
-// // fetchData();
+var base_url = ''
+var image_size = ''
+const API_KEY = '80620987d484f841a8e638e09a1b89ed'
 
 
-// async function getConfig(){
-//     const res = await fetch('https://api.themoviedb.org/3/configuration?api_key=80620987d484f841a8e638e09a1b89ed')
-//     const config = await res.json()
-//     const { images } = config
-//     baseURL = images.base_url;
-//     imageSize = images.poster_sizes[2]
-//     console.log(images)
-//     console.log(baseURL)
+async function getConfiguration(){
+    const res = await fetch(`https://api.themoviedb.org/3/configuration?api_key=${API_KEY}`)
+    const { images } = await res.json()
+    return images
+}
 
-// }
-
-// getConfig()
-
-// async function getPopularMovies() {
-//     const res = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=80620987d484f841a8e638e09a1b89ed&language=en-US&page=1')
-//     const {results} = await res.json()
-//     console.log(results)
-//     return results;
-// }
-
-// getPopularMovies()
-//     .then(data => {
-//         data.forEach(movie => {
-//             const id = movie.id;
-//             const title = movie.title;
-//             const imagePath = movie.poster_path;
-//             const overview = movie.overview;
-//             const releaseDate = movie.release_date;
-//             return id, title, imagePath, overview, releaseDate
-//         });
-//     }).then((title,id,imagePath,overview,releaseDate) => {
-//         let result = ''
-
-//         result += `
-//         <article class="movie-card">
-//             <div class="img-container mb-1">
-//                 <img src="${baseURL}${imageSize}${imagePath}" alt="${title}" class="img-fluid">
-//             </div>
-//             <h4 class="title mb-1 p-0 ps-1">${title}</h4>
-//             <P class="date p-0 ps-1">${releaseDate}</P>
-//         </article>`
-
-//         movieList.innerHTML = result;
-//     })
-
+getConfiguration()
+    .then((configuration) => {
+        base_url = configuration.secure_base_url
+        image_size = configuration.still_sizes[3]
+        return {base_url, image_size}
+    })
+    .then((object) => {
+        getPopularMovies()
+        .then(popularMovies => {
+            let list = ''
+            popularMovies.forEach(movie => {
+                list += `
+                <article class="movie-card">
+                <div class="img-container mb-1">
+                    <img src="${object.base_url + object.image_size + movie.poster_path}" alt="${movie.title}" class="img-fluid w-100">
+                </div>
+                <h4 class="title mb-1 p-0 ps-1">${movie.title}</h4>
+                <P class="date p-0 ps-1">${movie.release_date}</P>
+            </article>`
+            movieList.innerHTML = list;
+            });
+        })
+    })
+    .catch((err) => {
+        console.log(err)
+    })
     
 
+async function getPopularMovies(){
+    const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
+    const {results} = await res.json()
+    return results
+
+}
