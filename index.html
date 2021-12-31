@@ -4,11 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="./src/assets/favicon.ico"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
     <title>THE MOVIE STORE | search and discover what may interest you</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,7 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300;400;600&family=Noto+Serif:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./src/css/style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <header class="my-5">
@@ -44,6 +40,17 @@
       <div class="container movie-center px-auto" id="movie-list"></div>
     </main>
 
-    <script src="./src/js/index.js" type="module"></script>
+    <script src="./scripts/index.js" type="module"></script>
+    <script>
+      const API_KEY = "80620987d484f841a8e638e09a1b89ed";
+
+      async function getDetail(id) {
+        const res = await fetch(
+          `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
+        );
+        const data = await res.json();
+        console.log(data);
+      }
+    </script>
   </body>
 </html>

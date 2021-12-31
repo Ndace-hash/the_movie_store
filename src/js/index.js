@@ -1,7 +1,6 @@
 // import {} from 'dotenv/config'
 
 // // dotenv.config()
-// // const API_KEY = process.env.API_KEY;
 
 const searchBar = document.getElementById("search-bar");
 const movieList = document.getElementById("movie-list");
@@ -9,6 +8,7 @@ const movieList = document.getElementById("movie-list");
 var base_url = "";
 var image_size = "";
 const API_KEY = "80620987d484f841a8e638e09a1b89ed";
+let movieCard = [];
 
 async function getConfiguration() {
   const res = await fetch(
@@ -29,7 +29,9 @@ getConfiguration()
       let list = "";
       popularMovies.forEach((movie) => {
         list += `
-                <article class="movie-card" tabindex="0">
+                <article class="movie-card" tabindex="0" id="${
+                  movie.id
+                }" onclick="return getDetail(${movie.id})">
                 <div class="img-container mb-1">
                     <img src="${
                       object.base_url + object.image_size + movie.poster_path
@@ -178,7 +180,9 @@ function searchQuery() {
 
       movies.results.forEach((movie) => {
         list += `
-                <article class="movie-card" tabindex="0">
+                <article class="movie-card" tabindex="0" data-id="${
+                  movie.id
+                }" onclick="return getDetail(${movie.id})">
                 <div class="img-container mb-1">
                     <img src="${
                       base_url + image_size + movie.poster_path
@@ -190,7 +194,9 @@ function searchQuery() {
       });
       tvs.results.forEach((tv) => {
         list += `
-                <article class="movie-card" tabindex="0">
+                <article class="movie-card" tabindex="0" onclick="return getDetail(${
+                  tv.id
+                })">
                 <div class="img-container mb-1">
                     <img src="${base_url + image_size + tv.poster_path}" alt="${
           tv.title
@@ -205,4 +211,12 @@ function searchQuery() {
       console.log(movies, tvs);
     })
     .catch((err) => console.log(err));
+}
+
+async function getDetail(id) {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
+  );
+  const data = await res.json();
+  console.log(data);
 }
