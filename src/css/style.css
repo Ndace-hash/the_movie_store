@@ -1,4 +1,4 @@
-@import "./bootstrap.min.css";
+@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 :root {
   font-size: 18;
@@ -28,7 +28,7 @@ input::placeholder {
   font-size: 1.2em;
   font-weight: 500;
 }
-.header-container > h1 {
+h1 {
   text-transform: uppercase;
   color: var(--misc);
   font-family: "Noto Serif", serif;
@@ -49,6 +49,13 @@ input::placeholder {
 }
 #search-bar:focus {
   box-shadow: inset 3px 1px 20px 3px var(--misc), 1px 1px 7px 1px var(--misc);
+}
+#search-btn {
+  background-color: hsl(var(--primary-clr));
+  color: white;
+  font-size: 1.15rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .movie-center {
