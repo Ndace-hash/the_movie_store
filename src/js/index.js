@@ -1,4 +1,5 @@
 import { baseUrl, getQuery, getPopularMovies } from "./config.js";
+import "../css/style.css";
 
 // // dotenv.config()
 
@@ -6,30 +7,30 @@ const searchBar = document.getElementById("search-bar");
 const movieList = document.getElementById("movie-list");
 const searchButton = document.getElementById("search-btn");
 
-const API_KEY = "80620987d484f841a8e638e09a1b89ed";
-
-getPopularMovies()
-  .then(async (popularMovies) => {
-    let list = "";
-    popularMovies.forEach((movie) => {
-      list += `
-    <article class="movie-card" tabindex="0" id="${
-      movie.id
-    }" onclick="return getDetail(${movie.id})">
-    <div class="img-container mb-1">
-    <img src="${baseUrl + movie.poster_path}" alt="${
-        movie.title
-      }" class="img-fluid w-100">
-    </div>
-    <h4 class="title mb-1 p-0 ps-1">${movie.title}</h4>
-    <P class="date p-0 ps-1">${movie.release_date}</P>
-    </article>`;
-      movieList.innerHTML = list;
+document.addEventListener("DOMContentLoaded", () => {
+  getPopularMovies()
+    .then(async (popularMovies) => {
+      let list = "";
+      popularMovies.forEach((movie) => {
+        list += `
+      <article class="movie-card" tabindex="0" id="${
+        movie.id
+      }" onclick="return getDetail(${movie.id})">
+      <div class="img-container mb-1">
+      <img src="${baseUrl + movie.poster_path}" alt="${
+          movie.title
+        }" class="img-fluid w-100">
+      </div>
+      <h4 class="title mb-1 p-0 ps-1">${movie.title}</h4>
+      <P class="date p-0 ps-1">${movie.release_date}</P>
+      </article>`;
+        movieList.innerHTML = list;
+      });
+    })
+    .catch((err) => {
+      console.error(err);
     });
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+});
 
 // handling search queries
 

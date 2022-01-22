@@ -12,7 +12,6 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300;400;600&family=Noto+Serif:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./src/css/style.css" />
   </head>
   <body>
     <header class="my-5">
@@ -20,7 +19,7 @@
         class="container-md header-container align-items-center d-flex flex-column py-2"
       >
         <h1 class="mb-3">the<span>movie</span>store</h1>
-        <div class="search-bar">
+        <div class="search-bar-wrapper">
           <input
             type="search"
             name="search"
@@ -36,7 +35,6 @@
       <div class="container movie-center px-auto" id="movie-list"></div>
     </main>
 
-    <script src="./src/js/index.js" type="module"></script>
     <script>
       const API_KEY = "80620987d484f841a8e638e09a1b89ed";
 

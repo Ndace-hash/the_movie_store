@@ -15,10 +15,8 @@ body,
 html {
   height: 100%;
   font-family: "Noto Sans Display", sans-serif;
-  background: linear-gradient(
-    hsl(var(--secondary-clr)),
-    hsl(var(--accent-clr))
-  );
+  background: hsl(var(--secondary-clr));
+
   color: var(--misc);
   background-repeat: initial;
   background-position: center;
@@ -39,7 +37,7 @@ h1 {
 }
 
 #search-bar {
-  width: 30rem;
+  max-width: 30rem;
   padding: 0.3em 0.5em;
   font-weight: 500;
   outline: none;
@@ -70,7 +68,7 @@ h1 {
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid hsl(var(--secondary-clr));
-  box-shadow: 1px 1px 10px 1px var(--misc);
+  box-shadow: 1px 1px 10px 1px hsl(56, 100%, 0%);
   border-radius: var(--border-radius);
   padding: 0;
   transition: transform 500ms ease-out;
@@ -100,5 +98,4 @@ h1 {
 
 .movie-card:is(:hover, :focus) {
   cursor: pointer;
-  transform: scale(1.11);
 }
