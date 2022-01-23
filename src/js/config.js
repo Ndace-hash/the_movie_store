@@ -1,3 +1,5 @@
+const searchBar = document.getElementById("search-bar");
+
 const API_KEY = "80620987d484f841a8e638e09a1b89ed";
 var base_url = "";
 var image_size = "";

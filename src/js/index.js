@@ -3,7 +3,6 @@ import "../css/style.css";
 
 // // dotenv.config()
 
-const searchBar = document.getElementById("search-bar");
 const movieList = document.getElementById("movie-list");
 const searchButton = document.getElementById("search-btn");
 
