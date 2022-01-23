@@ -15,10 +15,8 @@ body,
 html {
   height: 100%;
   font-family: "Noto Sans Display", sans-serif;
-  background: linear-gradient(
-    hsl(var(--secondary-clr)),
-    hsl(var(--accent-clr))
-  );
+  background: hsl(var(--secondary-clr));
+
   color: var(--misc);
   background-repeat: initial;
   background-position: center;
@@ -28,7 +26,7 @@ input::placeholder {
   font-size: 1.2em;
   font-weight: 500;
 }
-.header-container > h1 {
+h1 {
   text-transform: uppercase;
   color: var(--misc);
   font-family: "Noto Serif", serif;
@@ -39,7 +37,7 @@ input::placeholder {
 }
 
 #search-bar {
-  width: 30rem;
+  max-width: 30rem;
   padding: 0.3em 0.5em;
   font-weight: 500;
   outline: none;
@@ -49,6 +47,13 @@ input::placeholder {
 }
 #search-bar:focus {
   box-shadow: inset 3px 1px 20px 3px var(--misc), 1px 1px 7px 1px var(--misc);
+}
+#search-btn {
+  background-color: hsl(var(--primary-clr));
+  color: white;
+  font-size: 1.15rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .movie-center {
@@ -63,7 +68,7 @@ input::placeholder {
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid hsl(var(--secondary-clr));
-  box-shadow: 1px 1px 10px 1px var(--misc);
+  box-shadow: 1px 1px 10px 1px hsl(56, 100%, 0%);
   border-radius: var(--border-radius);
   padding: 0;
   transition: transform 500ms ease-out;
@@ -93,5 +98,4 @@ input::placeholder {
 
 .movie-card:is(:hover, :focus) {
   cursor: pointer;
-  transform: scale(1.11);
 }

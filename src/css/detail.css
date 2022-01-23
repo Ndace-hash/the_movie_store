@@ -1,0 +1,23 @@
+.banner {
+  height: 400px;
+  width: 100%;
+  background-color: black;
+  margin-bottom: 1rem;
+  background-size: contain;
+  background-position: center;
+}
+#banner-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.title {
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.body {
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
