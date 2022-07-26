@@ -1,6 +1,8 @@
+import dotenv from "dotenv";
 const searchBar = document.getElementById("search-bar");
+dotenv.config();
 
-const API_KEY = "80620987d484f841a8e638e09a1b89ed";
+const API_KEY = process.env.API_KEY;
 var base_url = "";
 var image_size = "";
 export let baseUrl;
